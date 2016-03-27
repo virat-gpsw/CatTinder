@@ -29,8 +29,8 @@ public class MainActivityTest extends ActivityTestCase<MainActivity>{
   static final String CAT_SNIPPET_ONE = "snippet_one";
   static final String CAT_SNIPPET_TWO = "snippet_two";
 
-  static final Cat CAT_ONE = new Cat(CAT_LINK_ONE, CAT_SNIPPET_ONE);
-  static final Cat CAT_TWO = new Cat(CAT_LINK_TWO, CAT_SNIPPET_TWO);
+  static final CatObj CAT_ONE = new CatObj(CAT_LINK_ONE, CAT_SNIPPET_ONE);
+  static final CatObj CAT_TWO = new CatObj(CAT_LINK_TWO, CAT_SNIPPET_TWO);
 
   public MainActivityTest() {
     super(MainActivity.class);
@@ -63,8 +63,8 @@ public class MainActivityTest extends ActivityTestCase<MainActivity>{
       });
     }
 
-    List<Cat> getMockCats() {
-      return new ArrayList<Cat>(){
+    List<CatObj> getMockCats() {
+      return new ArrayList<CatObj>(){
         {
           add(CAT_ONE);
           add(CAT_TWO);
@@ -74,14 +74,14 @@ public class MainActivityTest extends ActivityTestCase<MainActivity>{
   }
 
   private static class TestCatServiceResponse extends CatServiceResponse {
-    private List<Cat> mCats;
+    private List<CatObj> mCats;
 
-    public TestCatServiceResponse(List<Cat> cats) {
+    public TestCatServiceResponse(List<CatObj> cats) {
       mCats = cats;
     }
 
     @Override
-    public List<Cat> getCats() {
+    public List<CatObj> getCats() {
       return mCats;
     }
   }

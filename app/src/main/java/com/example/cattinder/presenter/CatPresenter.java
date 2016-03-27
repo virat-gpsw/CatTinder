@@ -1,6 +1,5 @@
 package com.example.cattinder.presenter;
 
-import com.example.cattinder.data.CatServiceResponse.Cat;
 import com.example.cattinder.data.ICatDataSource;
 import com.example.cattinder.rx.SchedulerFactory;
 import com.example.cattinder.view.ICatView;
@@ -22,10 +21,5 @@ public class CatPresenter implements ICatPresenter {
                 .subscribeOn(schedulerFactory.newThread())
                 .observeOn(schedulerFactory.mainThread())
                 .subscribe(catView::showCats);
-    }
-
-    @Override
-    public void catLiked(Cat cat) {
-
     }
 }

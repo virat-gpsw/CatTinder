@@ -1,23 +1,31 @@
 package com.example.cattinder.adapter;
 
 import com.example.cattinder.R;
-import com.example.cattinder.data.CatServiceResponse.Cat;
+import com.example.cattinder.data.Cat;
+import com.example.cattinder.data.CatServiceResponse;
+import com.example.cattinder.data.CatServiceResponse.CatObj;
 import com.example.cattinder.util.Logger;
+import com.squareup.picasso.Picasso;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.List;
+
 public class CatAdapter extends BaseAdapter {
 
-    private final LayoutInflater inflater;
     private final List<Cat> cats;
+    private final LayoutInflater inflater;
+    private Picasso picasso;
 
-    public CatAdapter(List<Cat> cats, LayoutInflater inflater) {
+    public CatAdapter(List<Cat> cats, LayoutInflater inflater, Picasso picasso) {
         this.cats = cats;
         this.inflater = inflater;
+        this.picasso = picasso;
     }
 
     @Override
@@ -32,30 +40,29 @@ public class CatAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int index) {
-        return 0;
+        return index;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-        // TODO - set up the card view here
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.kitty_cat, viewGroup, false);
         }
 
-        Logger.debug("Cats size: " + cats.size());
+        // Get the current Cat
+        Cat cat = cats.get(position);
+
+        // Set the Cat's image
+        ImageView imageView = (ImageView)convertView.findViewById(R.id.image);
+        picasso.load(cat.link)
+                .resize(290, 290)
+                .centerCrop()
+                .into(imageView);
+
+        // Set the Cat's snippet
+        TextView snippet = (TextView)convertView.findViewById(R.id.snippet);
+        snippet.setText(cat.snippet);
 
         return convertView;
-    }
-
-    public boolean addCats(List<Cat> moreCats) {
-        return cats.addAll(moreCats);
-    }
-
-    public List<Cat> getCats() {
-        return cats;
-    }
-
-    public boolean removeCat(Cat cat) {
-        return cats.remove(cat);
     }
 }

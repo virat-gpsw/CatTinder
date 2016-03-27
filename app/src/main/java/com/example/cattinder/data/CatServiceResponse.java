@@ -14,22 +14,22 @@ import java.util.List;
  * an object of this class.
  */
 public class CatServiceResponse {
-  private List<Cat> items = new ArrayList<>();
+  private List<CatObj> items = new ArrayList<>();
 
-  public List<Cat> getCats() {
+  public List<CatObj> getCats() {
     return items;
   }
 
-  public static class Cat {
+  public static class CatObj{
     private String link;
     private String snippet;
 
-    public Cat() {
+    public CatObj() {
       link = "";
       snippet = "";
     }
 
-    public Cat(String link, String snippet) {
+    public CatObj(String link, String snippet) {
       this.link = link;
       this.snippet = snippet;
     }
@@ -50,7 +50,7 @@ public class CatServiceResponse {
         return false;
       }
 
-      Cat cat = (Cat) o;
+      CatObj cat = (CatObj) o;
       return link.equals(cat.link) && snippet.equals(cat.snippet);
 
     }

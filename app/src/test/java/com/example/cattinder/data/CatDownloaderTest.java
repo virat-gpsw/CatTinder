@@ -1,11 +1,8 @@
 package com.example.cattinder.data;
 
 import com.example.cattinder.api.CatService;
-import com.example.cattinder.api.TestSchedulerFactory;
-import com.example.cattinder.data.CatServiceResponse.Cat;
 import com.example.test.RobolectricTest;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -71,12 +68,12 @@ public class CatDownloaderTest extends RobolectricTest {
     private static class TestCatServiceResponse extends CatServiceResponse {
 
         @Override
-        public List<Cat> getCats() {
-            return new ArrayList<Cat>() {
+        public List<CatObj> getCats() {
+            return new ArrayList<CatObj>() {
                 {
-                    add(new Cat(MOCK_CAT_LINK, MOCK_CAT_SNIPPET_ONE));
-                    add(new Cat(MOCK_CAT_LINK, MOCK_CAT_SNIPPET_TWO));
-                    add(new Cat(MOCK_CAT_LINK, MOCK_CAT_SNIPPET_THREE));
+                    add(new CatObj(MOCK_CAT_LINK, MOCK_CAT_SNIPPET_ONE));
+                    add(new CatObj(MOCK_CAT_LINK, MOCK_CAT_SNIPPET_TWO));
+                    add(new CatObj(MOCK_CAT_LINK, MOCK_CAT_SNIPPET_THREE));
                 }
             };
         }

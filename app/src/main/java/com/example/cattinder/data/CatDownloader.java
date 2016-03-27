@@ -1,9 +1,9 @@
 package com.example.cattinder.data;
 
 import com.example.cattinder.api.CatService;
-import com.example.cattinder.data.CatServiceResponse.Cat;
-import com.example.cattinder.rx.SchedulerFactory;
+import com.example.cattinder.data.CatServiceResponse.CatObj;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
@@ -21,12 +21,16 @@ public class CatDownloader implements ICatDataSource {
 
     @Override
     public Observable<List<Cat>> getCats() {
-        return downloadCats().flatMap(response -> Observable.just(response.getCats()));
-    }
+        return downloadCats().flatMap(response -> {
 
-    @Override
-    public void catLiked(Cat cat) {
-        // If we had a database, this would be the function to persist Cat Likes
+            // Convert List<CatObj> to List<Cat>
+            List<Cat> cats = new ArrayList<>();
+            for(CatObj catObj : response.getCats()) {
+                cats.add(new Cat(catObj.getImageUri(), catObj.getDescription()));
+            }
+
+            return Observable.just(cats);
+        });
     }
 
     private Observable<CatServiceResponse> downloadCats() {
