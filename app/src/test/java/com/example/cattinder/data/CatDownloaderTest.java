@@ -26,7 +26,7 @@ public class CatDownloaderTest extends RobolectricTest {
 
     @Before
     public void setup() {
-        catDownloader = new CatDownloader(new TestCatService(), new CatPaginator());
+        catDownloader = new CatDownloader(new TestCatService(), new GoogleSearchPaginator());
     }
 
     @Test

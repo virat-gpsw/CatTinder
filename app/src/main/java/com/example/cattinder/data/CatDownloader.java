@@ -11,11 +11,11 @@ import rx.Observable;
 public class CatDownloader implements ICatDataSource {
 
     private final CatService catService;
-    private CatPaginator catPaginator;
+    private GoogleSearchPaginator paginator;
 
-    public CatDownloader(CatService catService, CatPaginator catPaginator) {
+    public CatDownloader(CatService catService, GoogleSearchPaginator paginator) {
         this.catService = catService;
-        this.catPaginator = catPaginator;
+        this.paginator = paginator;
     }
 
     @Override
@@ -33,6 +33,6 @@ public class CatDownloader implements ICatDataSource {
     }
 
     private Observable<CatServiceResponse> downloadCats() {
-        return catService.getCats(catPaginator.getPageAndIncrement());
+        return catService.getCats(paginator.getPageAndIncrement());
     }
 }

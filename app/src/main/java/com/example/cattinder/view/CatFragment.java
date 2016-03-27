@@ -6,7 +6,7 @@ import com.example.cattinder.adapter.CatAdapter;
 import com.example.cattinder.api.CatService;
 import com.example.cattinder.data.Cat;
 import com.example.cattinder.data.CatDownloader;
-import com.example.cattinder.data.CatPaginator;
+import com.example.cattinder.data.GoogleSearchPaginator;
 import com.example.cattinder.data.ICatDataSource;
 import com.example.cattinder.presenter.CatPresenter;
 import com.example.cattinder.presenter.ICatPresenter;
@@ -48,7 +48,7 @@ public class CatFragment extends Fragment implements ICatView{
                 .build();
 
         ICatDataSource catDataSource = new CatDownloader(restAdapter.create(CatService.class), //
-                                                         new CatPaginator() //
+                                                         new GoogleSearchPaginator() //
         );
 
         catPresenter = new CatPresenter(this, catDataSource, new SchedulerFactory());
