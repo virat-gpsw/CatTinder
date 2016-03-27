@@ -23,22 +23,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import retrofit.RestAdapter;
 
 public class CatFragment extends Fragment implements ICatView{
 
     private ICatPresenter catPresenter;
 
-    // UI FIELDS
-    private SwipeFlingAdapterView flingContainer;
-    private Button yesButton;
-    private Button noButton;
+    // UI VIEWS
+    @Bind(R.id.kittyStack)SwipeFlingAdapterView flingContainer;
+    @Bind(R.id.yesButton)Button yesButton;
+    @Bind(R.id.noButton) Button noButton;
 
+    /**
+     * In lieu of a DI framework, we "inject" our dependencies here.
+     */
     protected void inject() {
         RestAdapter restAdapter = new RestAdapter.Builder()
                 .setEndpoint(CatService.BASE_URL)
@@ -55,13 +58,9 @@ public class CatFragment extends Fragment implements ICatView{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_hotornot, container, false);
+        ButterKnife.bind(this, view);
 
-        flingContainer = (SwipeFlingAdapterView)view.findViewById(R.id.kittyStack);
-        
-        yesButton = (Button)view.findViewById(R.id.yesButton);
         yesButton.setOnClickListener(v -> flingContainer.getTopCardListener().selectRight());
-
-        noButton = (Button)view.findViewById(R.id.noButton);
         noButton.setOnClickListener(v -> flingContainer.getTopCardListener().selectLeft());
 
         return view;
@@ -72,7 +71,6 @@ public class CatFragment extends Fragment implements ICatView{
         super.onActivityCreated(savedInstanceState);
         inject();
 
-        // Load the initial set of Catz
         catPresenter.loadCats();
     }
 
@@ -80,11 +78,11 @@ public class CatFragment extends Fragment implements ICatView{
     public void showCats(List<Cat> cats) {
         Logger.debug("Cats size: " + cats.size());
 
-        CatAdapter adapter = new CatAdapter(cats, LayoutInflater.from(getActivity()), Picasso.with(getActivity()));
+        BaseAdapter adapter = new CatAdapter(cats, LayoutInflater.from(getActivity()), Picasso.with(getActivity()));
         flingContainer.setAdapter(adapter);
         flingContainer.setFlingListener(new CatFlingListener(getActivity(), adapter, cats));
 
-        // Show some Catz!
+        // Show some Cats!
         adapter.notifyDataSetChanged();
     }
 }
