@@ -8,7 +8,7 @@ public class CatPaginator {
         page = 1; // pages start at index 1
     }
 
-    public int getPage() {
+    public int getPageAndIncrement() {
         return page++;
     }
 }

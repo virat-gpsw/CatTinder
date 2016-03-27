@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import rx.Observable;
-import rx.functions.Func1;
 
 public class CatDownloader implements ICatDataSource {
 
@@ -34,6 +33,6 @@ public class CatDownloader implements ICatDataSource {
     }
 
     private Observable<CatServiceResponse> downloadCats() {
-        return catService.getCats(catPaginator.getPage());
+        return catService.getCats(catPaginator.getPageAndIncrement());
     }
 }

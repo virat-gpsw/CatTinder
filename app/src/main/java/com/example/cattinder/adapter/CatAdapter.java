@@ -20,7 +20,7 @@ public class CatAdapter extends BaseAdapter {
 
     private final List<Cat> cats;
     private final LayoutInflater inflater;
-    private Picasso picasso;
+    private final Picasso picasso;
 
     public CatAdapter(List<Cat> cats, LayoutInflater inflater, Picasso picasso) {
         this.cats = cats;

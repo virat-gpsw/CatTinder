@@ -35,8 +35,8 @@ public class CatFragment extends Fragment implements ICatView{
     private ICatPresenter catPresenter;
 
     // UI VIEWS
-    @Bind(R.id.kittyStack)SwipeFlingAdapterView flingContainer;
-    @Bind(R.id.yesButton)Button yesButton;
+    @Bind(R.id.kittyStack) SwipeFlingAdapterView flingContainer;
+    @Bind(R.id.yesButton) Button yesButton;
     @Bind(R.id.noButton) Button noButton;
 
     /**
@@ -80,7 +80,7 @@ public class CatFragment extends Fragment implements ICatView{
 
         BaseAdapter adapter = new CatAdapter(cats, LayoutInflater.from(getActivity()), Picasso.with(getActivity()));
         flingContainer.setAdapter(adapter);
-        flingContainer.setFlingListener(new CatFlingListener(getActivity(), adapter, cats));
+        flingContainer.setFlingListener(new CatFlingListener(getActivity(), catPresenter, flingContainer, adapter, cats));
 
         // Show some Cats!
         adapter.notifyDataSetChanged();
