@@ -16,17 +16,17 @@ import rx.observers.TestSubscriber;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CatDownloaderTest extends RobolectricTest {
+public class GoogleCatDownloaderTest extends RobolectricTest {
     private static final String MOCK_CAT_LINK = "www.kittykat.com";
     private static final String MOCK_CAT_SNIPPET_ONE = "Hey, my name is Garfield.";
     private static final String MOCK_CAT_SNIPPET_TWO = "Meow, I am Tom :).";
     private static final String MOCK_CAT_SNIPPET_THREE = "Purr, I am Figaro ;).";
 
-    private CatDownloader catDownloader;
+    private GoogleCatDownloader mGoogleCatDownloader;
 
     @Before
     public void setup() {
-        catDownloader = new CatDownloader(new TestCatService(), new GoogleSearchPaginator());
+        mGoogleCatDownloader = new GoogleCatDownloader(new TestCatService(), new GoogleSearchPaginator());
     }
 
     @Test
@@ -35,7 +35,7 @@ public class CatDownloaderTest extends RobolectricTest {
         TestSubscriber<List<Cat>> testSubscriber = new TestSubscriber<>();
 
         // WHEN
-        Observable<List<Cat>> catObservable = catDownloader.getCats();
+        Observable<List<Cat>> catObservable = mGoogleCatDownloader.getCats();
         catObservable.subscribe(testSubscriber);
 
         // THEN

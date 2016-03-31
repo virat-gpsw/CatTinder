@@ -1,4 +1,4 @@
-package com.example.cattinder.presenter;
+package com.example.cattinder.logic;
 
 import com.example.cattinder.data.ICatDataSource;
 import com.example.cattinder.rx.SchedulerFactory;

@@ -8,12 +8,12 @@ import java.util.List;
 
 import rx.Observable;
 
-public class CatDownloader implements ICatDataSource {
+public class GoogleCatDownloader implements ICatDataSource {
 
-    private final CatService catService;
+    private CatService catService;
     private GoogleSearchPaginator paginator;
 
-    public CatDownloader(CatService catService, GoogleSearchPaginator paginator) {
+    public GoogleCatDownloader(CatService catService, GoogleSearchPaginator paginator) {
         this.catService = catService;
         this.paginator = paginator;
     }

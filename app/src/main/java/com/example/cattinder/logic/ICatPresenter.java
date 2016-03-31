@@ -1,4 +1,4 @@
-package com.example.cattinder.presenter;
+package com.example.cattinder.logic;
 
 public interface ICatPresenter {
 

@@ -1,5 +1,7 @@
 package com.example.cattinder.activity;
 
+import com.example.cattinder.view.CatActivity;
+
 import android.support.test.espresso.ViewAction;
 import android.support.test.espresso.ViewAssertion;
 import android.test.ActivityInstrumentationTestCase2;
@@ -31,10 +33,10 @@ import static org.hamcrest.Matchers.not;
  *
  * https://code.google.com/p/android-test-kit/wiki/DisablingAnimations
  */
-public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActivity> {
+public class MainActivityTest extends ActivityInstrumentationTestCase2<CatActivity> {
 
   public MainActivityTest() {
-    super(MainActivity.class);
+    super(CatActivity.class);
   }
 
   @Override protected void setUp() throws Exception {
