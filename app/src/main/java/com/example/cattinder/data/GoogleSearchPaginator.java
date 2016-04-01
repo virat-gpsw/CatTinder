@@ -2,13 +2,13 @@ package com.example.cattinder.data;
 
 public class GoogleSearchPaginator{
 
-    private int page;
+    private int mPage;
 
     public GoogleSearchPaginator() {
-        page = 1; // pagination starts at index 1
+        mPage = 1; // pagination starts at index 1
     }
 
     public int getPageAndIncrement() {
-        return page += 10;
+        return mPage += 10;
     }
 }

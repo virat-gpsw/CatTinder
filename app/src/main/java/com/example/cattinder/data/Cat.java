@@ -1,7 +1,7 @@
 package com.example.cattinder.data;
 
 import android.net.Uri;
-public class Cat{
+public class Cat {
 
     public final Uri link;
     public final String snippet;

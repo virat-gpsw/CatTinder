@@ -18,9 +18,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class GoogleCatDownloaderTest extends RobolectricTest {
     private static final String MOCK_CAT_LINK = "www.kittykat.com";
-    private static final String MOCK_CAT_SNIPPET_ONE = "Hey, my name is Garfield.";
-    private static final String MOCK_CAT_SNIPPET_TWO = "Meow, I am Tom :).";
-    private static final String MOCK_CAT_SNIPPET_THREE = "Purr, I am Figaro ;).";
+    private static final String MOCK_CAT_SNIPPET_ONE = "Hello, my name is Garfield.";
+    private static final String MOCK_CAT_SNIPPET_TWO = "Meow, I am Tom 8-).";
+    private static final String MOCK_CAT_SNIPPET_THREE = "Purr, I am Figaro ;-).";
 
     private GoogleCatDownloader mGoogleCatDownloader;
 
@@ -46,9 +46,9 @@ public class GoogleCatDownloaderTest extends RobolectricTest {
     }
 
     /**
-     * Returns a mock CatServiceResponse Observable.
+     * Returns a "mock" CatServiceResponse Observable.
      */
-    private static class TestCatService implements CatService{
+    private static class TestCatService implements CatService {
 
         @Override
         public Observable<CatServiceResponse> getCats(@Query("start") int startIndex) {

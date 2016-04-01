@@ -5,7 +5,7 @@ import com.example.cattinder.api.CatService;
 import com.example.cattinder.data.Cat;
 import com.example.cattinder.data.GoogleCatDownloader;
 import com.example.cattinder.data.GoogleSearchPaginator;
-import com.example.cattinder.data.ICatDataSource;
+import com.example.cattinder.data.ICatDataInteractor;
 import com.example.cattinder.logic.CatPresenter;
 import com.example.cattinder.logic.ICatPresenter;
 import com.example.cattinder.rx.SchedulerFactory;
@@ -50,7 +50,7 @@ public class CatActivity extends Activity implements ICatView {
                 .setEndpoint(CatService.BASE_URL)
                 .build();
 
-        ICatDataSource catDataSource = new GoogleCatDownloader(restAdapter.create(CatService.class), //
+        ICatDataInteractor catDataSource = new GoogleCatDownloader(restAdapter.create(CatService.class), //
                                                                new GoogleSearchPaginator() //
         );
 

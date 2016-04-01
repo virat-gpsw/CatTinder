@@ -4,7 +4,7 @@ import java.util.List;
 
 import rx.Observable;
 
-public interface ICatDataSource {
+public interface ICatDataInteractor {
 
     Observable<List<Cat>> getCats();
 
